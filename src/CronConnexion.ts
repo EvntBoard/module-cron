@@ -23,7 +23,7 @@ export class CronConnexion {
     });
 
     this.evntCom.onOpen = async () => {
-      await this.evntCom.callMethod("newEvent", [
+      await this.evntCom.notify("newEvent", [
         "cron-load",
         null,
         { emitter: this.name },
@@ -54,7 +54,7 @@ export class CronConnexion {
     }
     const job = this.jobs.get(cronTime)
     job.start();
-    this.evntCom.callMethod("newEvent", [
+    this.evntCom.notify("newEvent", [
       "cron-start",
       { cron: cronTime  },
       { emitter: this.name },
@@ -67,7 +67,7 @@ export class CronConnexion {
     }
     this.stopCron(cronTime)
     this.jobs.delete(cronTime)
-    this.evntCom.callMethod("newEvent", [
+    this.evntCom.notify("newEvent", [
       "cron-delete",
       { cron: cronTime  },
       { emitter: this.name },
@@ -79,19 +79,19 @@ export class CronConnexion {
       return
     }
 
-    this.evntCom.callMethod("newEvent", [
+    this.evntCom.notify("newEvent", [
       "cron-create",
       { cron: cronTime },
       { emitter: this.name },
     ]);
     const job = new CronJob(cronTime, () => {
-      this.evntCom.callMethod("newEvent", [
+      this.evntCom.notify("newEvent", [
         "cron-tick",
         { cron: cronTime },
         { emitter: this.name },
       ]);
     }, () => {
-      this.evntCom.callMethod("newEvent", [
+      this.evntCom.notify("newEvent", [
         "cron-stop",
         { cron: cronTime },
         { emitter: this.name },
@@ -100,7 +100,7 @@ export class CronConnexion {
     this.jobs.set(cronTime, job)
     if (start) {
       job.start();
-      this.evntCom.callMethod("newEvent", [
+      this.evntCom.notify("newEvent", [
         "cron-start",
         { cron: cronTime  },
         { emitter: this.name },

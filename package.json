@@ -6,9 +6,8 @@
   "bin": "dist/index.js",
   "scripts": {
     "start": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/index.ts",
-    "build": "ncc build src/index.ts -m -o build/cron",
-    "build:watch": "ncc build src/index.ts -w -o build/cron",
-    "lint": "prettier --write .",
+    "build": "ncc build src/index.ts -m -o dist/cron",
+    "lint": "prettier --write src/**/*.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

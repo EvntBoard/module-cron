@@ -37,7 +37,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           cd ./dist/
-          npx bestzip ../../cron.zip .
+          npx bestzip ../../module-cron.zip .
 
       - name: Release
         uses: softprops/action-gh-release@v1

@@ -22,7 +22,7 @@ export class CronConnexion {
       host: evntBoardHost,
     });
 
-    this.evntCom.onOpen = async () => {
+    this.evntCom.on('open', async () => {
       await this.evntCom.notify("newEvent", [
         "cron-load",
         null,
@@ -30,14 +30,16 @@ export class CronConnexion {
       ]);
 
       this.cron.forEach((cronTime) => {
-       this.createCron(cronTime, true);
+        this.createCron(cronTime, true);
       });
-    };
+    });
 
     this.evntCom.expose("stop", this.stopCron);
     this.evntCom.expose("start", this.startCron);
     this.evntCom.expose("create", this.createCron);
     this.evntCom.expose("delete", this.deleteCron);
+
+    this.evntCom.connect();
   }
 
   stopCron = (cronTime: string) => {

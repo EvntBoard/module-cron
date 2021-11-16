@@ -31,8 +31,8 @@ jobs:
         run: |
           cp ./metadata.json ./dist/metadata.json
           cp ./defaultConfig.json ./dist/config.json
-          echo ${{ github.repository }} > REPO.TXT
-          echo ${{ steps.get_version.outputs.version }} > VERSION.TXT
+          echo ${{ github.repository }} > ./dist/REPO.TXT
+          echo ${{ steps.get_version.outputs.version }} > ./dist/VERSION.TXT
 
       - name: Artefact
         uses: actions/upload-artifact@v2

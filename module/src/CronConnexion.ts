@@ -1,9 +1,9 @@
-import { EvntComNode } from "evntcom-js/dist/node";
+import { EvntCom } from "evntcom-js";
 import { CronJob } from 'cron';
 
 export class CronConnexion {
   private name: string;
-  private evntCom: EvntComNode;
+  private evntCom: EvntCom;
   private cron: string[];
   private jobs: Map<string, CronJob>
 
@@ -16,7 +16,7 @@ export class CronConnexion {
     this.jobs = new Map<string, CronJob>();
     this.name = name;
     this.cron = cron;
-    this.evntCom = new EvntComNode({
+    this.evntCom = new EvntCom({
       name,
       port: evntBoardPort,
       host: evntBoardHost,

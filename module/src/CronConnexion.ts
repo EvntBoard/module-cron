@@ -1,4 +1,4 @@
-import { EvntCom } from "evntcom-js";
+import { EvntCom } from "@evntboard/evntcom-node";
 import { CronJob } from 'cron';
 
 export class CronConnexion {

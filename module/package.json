@@ -21,8 +21,8 @@
   },
   "homepage": "https://github.com/EvntBoard/module-cron#readme",
   "dependencies": {
-    "cron": "https://github.com/kelektiv/node-cron.git",
-    "evntcom-js": "https://github.com/EvntBoard/evntcom-js.git"
+    "@evntboard/evntcom-node": "https://github.com/EvntBoard/evntcom-node.git",
+    "cron": "https://github.com/kelektiv/node-cron.git"
   },
   "devDependencies": {
     "@types/cron": "^1.7.3",
